@@ -41,7 +41,7 @@ export class PurchasesResolver {
     @CurrentUser() user: AuthUser,
     @Args('data') data: CreatePurchaseInput,
   ) {
-    let customer = await this.customersService.findById(user.sub);
+    let customer = await this.customersService.findByAuthId(user.sub);
 
     if (!customer) {
       customer = await this.customersService.create({
