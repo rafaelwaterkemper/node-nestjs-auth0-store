@@ -1,5 +1,5 @@
 import { Field, ID, ObjectType, registerEnumType } from '@nestjs/graphql';
-import {Product} from './product';
+import { Product } from './product';
 
 enum PurchaseStatus {
   PENDING = 'PENDING',

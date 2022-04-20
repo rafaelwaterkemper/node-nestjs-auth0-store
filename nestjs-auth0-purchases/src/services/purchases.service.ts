@@ -1,4 +1,3 @@
-import { create } from 'domain';
 import { PrismaService } from '../database/prisma/prisma.service';
 
 interface CreatePurchaseParams {
@@ -11,6 +10,17 @@ export class PruchaseService {
 
   listAll() {
     return this.prisma.purchase.findMany({
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
+  }
+
+  listAllByCustomerId(customerId: string) {
+    return this.prisma.purchase.findMany({
+      where: {
+        customerId,
+      },
       orderBy: {
         createdAt: 'desc',
       },
